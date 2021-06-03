@@ -66,10 +66,10 @@
     },
     {
       "key": "RejectionReason",
-      "label": "Rejection Reason",
+      "label": "Reason",
       "type": "textfield",
       "validate": {
-        "required": false
+        "required": true
       }
     },
     {
