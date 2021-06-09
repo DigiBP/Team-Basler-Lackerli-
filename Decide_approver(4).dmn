@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Decideapprover" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.0">
+  <decision id="Decide_approver" name="Decide_approver">
+    <decisionTable id="DecisionTable_0fnvqbt" hitPolicy="FIRST">
+      <input id="Input_1" label="Requesttype">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>Requesttype</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_02lhy7z">
+          <text>"Travel Car","Special","Meal","Software","Hotel","Hardware","Travel Train","Travel Airplain"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_1lr30lc" label="Amount">
+        <inputExpression id="LiteralExpression_0mx9smw" typeRef="double">
+          <text>Amount</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="GatewayDecision" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_0z8vf5h">
+          <text>"general","travel","special"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_1u7nulm">
+        <inputEntry id="UnaryTests_14t9wmx">
+          <text>"Special"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dm93sk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mm0j31">
+          <text>"special"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14vm8f4">
+        <inputEntry id="UnaryTests_1cpkep7">
+          <text>"Travel Car", "Travel Train", "Travel Airplain"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ynbtf4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0meval7">
+          <text>"travel"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s6nj3p">
+        <inputEntry id="UnaryTests_0cqcg2f">
+          <text>not("Travel Car", "Travel Train", "Travel Airplain","Special")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i62hy1">
+          <text>&lt; 2000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1838otd">
+          <text>"general"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cf8qd9">
+        <inputEntry id="UnaryTests_14vh5e8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0feq075">
+          <text>&gt;= 2000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0f7b778">
+          <text>"special"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decide_approver">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
